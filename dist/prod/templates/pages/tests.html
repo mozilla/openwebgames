@@ -1,0 +1,79 @@
+
+<input metadata type="hidden" name="title" value="Run Test | Open Web Games"/>
+<input metadata type="hidden" name="description" value="Test your browser's core web technologies for gaming."/>
+
+<div class="page-wrapper view-tests" ng-class="{ 'is-loading': testState === 'in-progress' && !games[activeGameKey].timer }">
+	<div class="test-drive">
+
+		<!-- Interstial States -->
+		<div class="interstial">
+			<div ng-show="testState == 'intro'" snippet="testIntro"></div>
+			<div ng-show="testState == 'completed'" snippet="testCompleted"></div>
+			<div ng-show="testState == 'cancelled'" snippet="testCancelled"></div>
+			<div ng-show="testState == 'timeout'" snippet="testTimeout"></div>
+		</div>
+
+		<!-- Close button on mobile -->
+		<button ng-if="isMobile" class="close" ng-click="cancel()"></button>
+		<div class="content">
+			<div ng-show="testState == 'in-progress'" class="test-body">
+				<div class="game-details">
+					<div class="wrapper">
+						<div class="meta">
+							<span>Up Next</span>
+							<h1 ng-bind="games[activeGameKey].name"></h1>
+							<div ng-repeat="credit in games[activeGameKey].credits">
+								<span ng-bind="credit.category"></span>
+								<a ng-href="{{credit.url}}" target="_blank">
+									<span ng-bind="credit.name"></span>
+								</a>
+							</div>
+						</div>
+						<div class="preloader">
+							<span ng-bind="loadingPercent || '0.00%'"></span>
+							<h2 id="loading_progress">Loading...</h2>
+							<p>Please wait. This could take a minute.</p>
+						</div>
+					</div>
+				</div>
+				<div id="game-container" class="game"></div>
+			</div>
+			<div class="test-controls">
+				<div class="timer" ng-class="[games[activeGameKey].performance, testState]" >
+					<div class="time" ng-show="testState == 'in-progress'" ng-bind="games[activeGameKey].timer || '0:00'"></div>
+				</div>
+				<div class="game-tracker">
+					<ul ng-show="testState != 'intro' && testState != 'cancelled' && testState != 'completed'" class="progress-indicators">
+
+						<div class="mobile-count" ng-show="isMobile" ng-bind-template="{{(activeGameIndex+1)+'/'+activeGameCount}}"></div>
+						<li ng-repeat="(key, game) in games" ng-class="{
+							'queue': game.status === 'queue',
+							'loading': key === activeGameKey && game.status === 'loading',
+							'running': key === activeGameKey && game.status === 'running',
+							'success':  game.status === 'success',
+							'failed': game.status === 'failed',
+							'timeout': game.status === 'timeout',
+						}">
+							<span class="game-status">
+								<span ng-attr-id="{{key}}" class="game-name" ng-bind="games[key].name"></span>
+							</span>
+						</li>
+					</ul>
+				</div>
+				<div ng-show="activeGameKey && testState !== 'cancelled'" class="actions">
+					<button ng-class="{'disabled': !isSkippable()}" ng-click="skip()">Skip Test</button><br>
+					<button ng-if="!isMobile" ng-click="cancel()">Cancel Test</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<nav ng-show="testState == 'cancelled' || testState == 'completed'">
+	<div class="nav-arrow nav-down">
+		<a ui-sref="app.page({slug:'report'})">
+			<button class="nav-button nav-line">Report A Problem</button>
+		</a>
+	</div>
+</nav>

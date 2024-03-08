@@ -1,0 +1,49 @@
+
+<input metadata type="hidden" name="title" value="FAQ | Open Web Games"/>
+<input metadata type="hidden" name="description" value="Read FAQs about how the web is changing the game."/>
+
+<div class="page-wrapper view-faq">
+	<div class="container">
+		<section class="content">
+			<h1>Frequently Asked Questions</h1>
+			<div class="js-slick faqs">
+				<div>
+
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#q1"><div class="vert"></div><div class="horz"></div></button>
+					<h2>What is the purpose of the Open Web Games website?</h2>
+					<div id="q1" class="collapse">
+						<p>This website exists to give browser vendors and game developers a place to demonstrate modern web game technologies, stress test browser implementations, and allow collaboration to maintain the stability and evolution of the entire web games stack over time.</p>
+					</div>
+				</div>
+				<div>
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#q2"><div class="vert"></div><div class="horz"></div></button>
+					<h2>Who developed this site?</h2>
+					<div id="q2" class="collapse">
+						<p>The Open Web Games site is currently stewarded by Mozilla (Firefox), which is in active discussions with other browser vendors including Microsoft (EDGE) and Google (Chrome) about improving games support on the web platform. An open invitation exists for other browsers to engage on all fronts in the future as well.</p>
+					</div>
+				</div>
+				<div>
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#q3"><div class="vert"></div><div class="horz"></div></button>
+					<h2>Can I suggest/supply demos for the test suite?</h2>
+					<div id="q3" class="collapse">
+						<p>We are always open to suggestions!<br/>Please send your suggestions to <a href="mailto:openwebgames@mozilla.com">openwebgames@mozilla.com</a>, and we will socialize with all interested browser vendors for discussion.</p>
+					</div>
+				</div>
+				<div>
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#q4"><div class="vert"></div><div class="horz"></div></button>
+					<h2>Why can't I run test suite titles full-screen?</h2>
+					<div id="q4" class="collapse">
+						<p>To better isolate tests from each other, tests are executed in an &lt;iframe&gt; that is navigated between test runs. This allows the browser to more easily collect the resources associated with each test after it has run. An unfortunate consequence of this testing design, however, is that the fullscreen &lt;canvas&gt; lives inside the &lt;iframe&gt; and is destroyed at the end of each test run so there is not a reliable way to maintain a continuous fullscreen experience. However, you can always run the games fullscreen (and interactively where supported) from the Demo page.</p>
+					</div>
+				</div>
+				<div>
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#q5"><div class="vert"></div><div class="horz"></div></button>
+					<h2>What data is collected and stored by the test suite?</h2>
+					<div id="q5" class="collapse">
+						<p>These results only include technical, non-personal information about your hardware and software. A sample of data collected may be viewed below. <a ng-click="showSampleResults()" class="btn">View Sample</a></p>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>
+</div>

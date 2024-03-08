@@ -1,0 +1,92 @@
+// Mixins
+
+@mixin vertical-align($position: relative) {
+	position: $position;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+@mixin vertical-align-parent() {
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+@mixin horizontal-align($position: relative) {
+	position: $position;
+	left: 50%;
+	-webkit-transform: translateX(-50%);
+	-ms-transform: translateX(-50%);
+	transform: translateX(-50%);
+}
+
+// Vendor prefixes
+
+@mixin filter($filter) {
+	-webkit-filter: $filter;
+	filter: $filter;
+}
+
+@mixin keyframes($animationName) {
+	@-webkit-keyframes #{$animationName} {
+		@content;
+	}
+	@-moz-keyframes #{$animationName} {
+		@content;
+	}
+	@-o-keyframes #{$animationName} {
+		@content;
+	}
+	@keyframes #{$animationName} {
+		@content;
+	}
+}
+
+@mixin transform($transform) {
+	-ms-transform: $transform;
+	-moz-transform: $transform;
+	-webkit-transform: $transform;
+	-o-transform: $transform;
+	transform: $transform;
+}
+
+// Aspect ratio
+
+@mixin aspect-ratio($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: '';
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+	> .content {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+}
+/* @mixin aspect-ratio-inner($width, $height) {
+	position: relative;
+	&:before {
+		display: block;
+		content: " ";
+		width: 100%;
+		padding-top: ($height / $width) * 100%;
+	}
+	> html {
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+	}
+} */

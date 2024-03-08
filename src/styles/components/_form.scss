@@ -1,0 +1,44 @@
+
+.form-wrapper {
+	@extend %centered-panel;
+	form {
+		margin-top: 40px;
+		.form-group {
+			margin-top: 80px;
+			&:first-child {
+				margin-top: 0;
+			}
+		}
+		input, textarea {
+			background: transparent;
+			border-bottom: 1px solid $orange;
+			color: #fff;
+			font-weight: $body;
+			font-family: $font-family-monospace;
+			&, &:focus {
+				outline: none;
+				box-shadow: none;
+			}
+		}
+		input {
+			border-left: 0;
+			border-top: 0;
+			border-right: 0;
+			border-radius: 0;
+		}
+		textarea {
+			border: 1px solid $orange;
+			border-radius: 10px;
+			resize: none;
+		}
+		label {
+			font-weight: $body;
+			text-transform: uppercase;
+			letter-spacing: 0.16em;
+			margin-top: 15px;
+		}
+		.btn-submit {
+			margin-top: 60px;
+		}
+	}
+}

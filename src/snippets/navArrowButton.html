@@ -1,0 +1,5 @@
+<div class="nav-arrow nav-{{direction}}" ng-class="{'highlight': $root.stateClass == 'home' && direction == 'down'}">
+	<a ui-sref="app.page({slug:slug})" ng-class="{'is-hidden': name == null}">
+		<button class="nav-button nav-line"><span>{{name}}</span></button>
+	</a>
+</div>

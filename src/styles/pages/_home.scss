@@ -1,0 +1,78 @@
+
+.view-home {
+	&.page-wrapper {
+		margin-top: 0;
+	}
+
+	// Content
+	.hero {
+		@include make-sm-column(12);
+		text-align: center;
+		h1 {
+			font-size: 90px;
+			@include transition(font-size .3s);
+			@media only screen and (min-height : 800px) {
+				font-size: 116px;
+			}
+			@media only screen and (min-height : 900px) {
+				font-size: 132px;
+			}
+		}
+		p {
+			max-width: 450px;
+			margin: 0 auto;
+		}
+		@media only screen and (max-width : $mobile-screen-size) {
+			padding: 20px 0 0;
+			h1 {
+				font-size: 60px;
+			}
+			h1, p {
+				max-width: 320px;
+				margin-left: auto;
+				margin-right: auto;
+			}
+		}
+	}
+	.controls {
+		margin: 30px 0 40px;
+	}
+	svg {
+		display: inline-block;
+		margin: 0 30px;
+		height: 60px;
+		/* rect, polygon {
+			@include transition(opacity .2s);
+			cursor: pointer;
+		}
+		&:hover {
+			rect, polygon {
+				opacity: .5;
+			}
+		}
+		g:hover, .active {
+			rect, polygon {
+				opacity: 1;
+			}
+		} */
+	}
+
+	.mobile-info {
+		display: none;
+		p {
+			font-size: 13px;
+		}
+	}
+	@media only screen and (max-width : $mobile-screen-size) {
+		.controls {
+			display: none;
+		}
+		.mobile-info {
+			display: block;
+			svg {
+				margin: 30px 0;
+			}
+		}
+	}
+
+}

@@ -1,0 +1,53 @@
+
+<input metadata type="hidden" name="title" value="Play Demos | Open Web Games"/>
+<input metadata type="hidden" name="description" value=""/>
+
+<div class="page-wrapper view-demos game-demos">
+	<div class="wrapper">
+		<header blurrable="mobile-demos">
+			<h1>Play Demos</h1>
+			<div snippet="demoIntro"></div>
+		</header>
+		<div ng-if="enableSearch" class="game-demos-control search">
+			<div class="wrapper">
+				<div class="search-bar">
+					<input type="text"></input>
+					<button class="submit">Submit</button>
+				</div>
+			</div>
+			<div class="close">
+				<div class="close-tab"></div>
+			</div>
+		</div>
+		<div ng-if="enableFilters" class="game-demos-control tags">
+			<div class="wrapper">
+				<ul class="tags-list">
+					<li ng-repeat="(featureKey, feature) in features"><button ng-class="{'inactive': (!feature.available), 'active': (feature.selected)}" ng-bind="featureKey"></button></li>
+				</ul>
+				<div class="controls">
+					<button class="reset">Clear Filters <span>26 Results</span></button>
+				</div>
+			</div>
+			<div class="close">
+				<div class="close-tab"></div>
+			</div>
+		</div>
+		<div class="container">
+			<ul class="demos" blurrable="mobile-demos">
+				<li ng-repeat="(gameKey, game) in games">
+					<div class="demo" style="background-image: url({{ game.screenshot }})">
+						<div class="bg" style="background-image: url({{ game.screenshot }})"></div>
+						<div class="meta">
+							<h3>{{ game.name }}</h3>
+							<dl>
+								<dt ng-repeat-start="credit in games[gameKey].credits" ng-bind="credit.category"></dt>
+								<dd ng-repeat-end=""><a ng-href="{{credit.url}}" target="_new"><span ng-bind="credit.name"></span></a></dd>
+							</dl>
+							<button ng-click="playDemo(gameKey)" class="play">Play demo</button>
+						</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

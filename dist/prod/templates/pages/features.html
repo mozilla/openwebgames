@@ -1,0 +1,169 @@
+
+<input metadata type="hidden" name="title" value="Features | Open Web Games"/>
+<input metadata type="hidden" name="description" value="This test suite will check your browser's support of features and technologies that power modern web games."/>
+
+<div class="page-wrapper view-features">
+	<div class="wrapper" ng-class="{games: (selectedTab == 'games'), browsers: (selectedTab !== 'games'), 'show-test-results': results}">
+		<nav>
+			<ul>
+				<li ng-class="{active: selectedTab == 'games'}" ng-click="selectedTab = 'games';">Demo API Support</li>
+				<li ng-class="{active: selectedTab == 'browsers'}" ng-click="selectedTab = 'browsers';">Browser API Support</li>
+			</ul>
+		</nav>
+		<aside>
+			<div class="msg-default" ng-switch="selectedTab">
+				<div ng-switch-when="browsers">
+					<h2>Browser Comparison</h2>
+					<p>Web gaming technologies as currently supported by the most popular browsers.</p>
+					<a ui-sref="app.page({slug:'tests'})" class="btn btn-highlight" ng-if="!results">Run Test</a>
+					<a ng-click="rerunTest()" class="btn" ng-if="results">Re-Run Test</a>
+				</div>
+				<div ng-switch-default>
+					<h2>How does your browser stack up?</h2>
+					<p>This test suite will check if your browser supports a variety of features and technologies that power modern web games. Not all of these features are utilized in all games, but better support means compatibility with a wider variety of games.<br/><a ui-sref="app.page({slug:'resources'})">Learn more about these technologies.</a></p>
+					<a ui-sref="app.page({slug:'tests'})" class="btn btn-highlight">Run Test</a>
+				</div>
+			</div>
+			<div class="msg-results">
+				<h2>Test Results<svg class="test-definitions" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36.2 36.2"><path fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10" d="M.8 18.1c0 9.6 7.8 17.3 17.3 17.3 9.6 0 17.3-7.8 17.3-17.3C35.4 8.5 27.6.8 18.1.8 8.5.8.8 8.5.8 18.1z"/><g fill="none" stroke="#ffffff" stroke-width="1.5" stroke-linecap="square" stroke-linejoin="round" stroke-miterlimit="10"><path d="M12.9 10.1c1-1.4 2.7-2.4 4.6-2.4 3.2 0 5.7 2.6 5.7 5.7 0 3.9-3.8 5.8-6.4 5.8v4.1M16.9 28.2v.3"/></g></svg></h2>
+				<a ng-click="rerunTest()" class="btn">Re-Run Test</a>
+				<div class="popover">
+					<dl>
+						<dt>FPS</dt>
+						<dd>Frames per second</dd>
+						<dt>Total Time</dt>
+						<dd>Time taken to render 2,000 playback frames</dd>
+						<dt>Dropped Frames</dt>
+						<dd>Number of unintentionally skipped playback frames</dd>
+					</dl>
+				</div>
+			</div>
+			<nav>
+				<ul>
+					<li ng-class="{active: selectedTab == 'games'}" ng-click="selectedTab = 'games';">Games View</li>
+					<li ng-class="{active: selectedTab == 'browsers'}" ng-click="selectedTab = 'browsers';">Browser View</li>
+				</ul>
+			</nav>
+		</aside>
+		<div class="table-wrapper">
+			<div class="highlight-container" ng-class="{'wide': selectedTab == 'games' && results}">
+				<div class="highlight highlight-row" style="opacity: 0;"></div>
+				<div class="highlight highlight-column" style="opacity: 0;"></div>
+			</div>
+			<div class="header">
+				<div class="current-browser">
+					<div>Your Browser</div>
+					<div class="browser-version"><span ng-bind="currentVersionSnippet"></span></div>
+				</div>
+				<div class="features" ng-init="browser=currentBrowser.browser" snippet="featureList"></div>
+			</div>
+			<div class="body">
+				<div class="feature-set your-browser" ng-if="!isMobile" ng-init="browser=currentBrowser.browser">
+					<div><img ng-src="{{ currentBrowser.browser.urls.icon }}"/></div>
+					<div class="title"> {{ currentBrowser.browser.name }}<br><span ng-bind="currentVersionSnippet"></span></div>
+					<div><span class="placeholder"></span></div>
+					<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#support-{{currentBrowser.browser.name | slugify}}" aria-expanded="false"><div class="vert"></div><div class="horz"></div></button>
+					<div id="support-{{currentBrowser.browser.name | slugify}}" class="collapse dropdown" snippet="featureList"></div>
+					<div class="etc highlight"></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'optimizedJavaScript')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'canvas')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webGl')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webAudio')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'fullscreen')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'pointerLock')"></span></div>
+					<div></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'indexedDb')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'serviceWorker')"></span></div>
+					<div></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webSocket')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webRtc')"></span></div>
+					<div></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'domLevel3')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'touch')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'gamepad')"></span></div>
+					<div></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webAssembly')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'sharedArrayBuffer')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'simd')"></span></div>
+					<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webGl2')"></span></div>
+					<div class="etc swoosh"><div></div></div>
+				</div>
+				<div class="body-group games" ng-class="{'is-hidden': selectedTab !== 'games'}">
+					<div class="feature-set game" ng-repeat="(gameKey, game) in games">
+						<div class="icon-wrapper">
+							<div class="icon" style="background-image:url({{ game.icon }});"></div>
+							<div class="title">{{ game.name }}</div>
+						</div>
+						<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#support-{{gameKey}}"><div class="vert"></div><div class="horz"></div></button>
+						<div id="support-{{gameKey}}" class="collapse dropdown" snippet="featureList"></div>
+
+						<div><span></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'optimizedJavaScript')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'canvas')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webGl')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webAudio')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'fullscreen')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'pointerLock')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'indexedDb')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'serviceWorker')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webSocket')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webRtc')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'domLevel3')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'touch')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'gamepad')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webAssembly')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'sharedArrayBuffer')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'simd')"></span></div>
+						<div class="js-column"><span ng-class="getGameFeatureClass(gameKey, 'webGl2')"></span></div>
+						<div class="etc test-result" ng-class="getResultClass(gameKey)">
+							<ul>
+								<li class="fps"><span>{{getFps(gameKey)}}<span>fps</span></span></li>
+								<li class="meta">{{getTotalTime(gameKey)}} Total Time<br />{{getFramesDropped(gameKey)}} Dropped Frames</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="body-group browsers" ng-class="{'is-hidden': selectedTab !== 'browsers'}">
+					<div class="feature-set browser" ng-repeat="browser in browsers">
+						<div class="icon-wrapper">
+							<div class="icon" style="background-image:url({{ browser.icon }});"></div>
+							<div class="title">
+								{{ browser.name }}<br/>
+								<span>Version {{ browser.development ? browser.latestVersion : browser.stableVersion }}</span>
+							</div>
+						</div>
+						<button type="button" class="btn plus-icon collapsed" data-toggle="collapse" data-target="#support-{{browser.name | slugify}}"><div class="vert"></div><div class="horz"></div></button>
+						<div id="support-{{browser.name | slugify}}" class="collapse dropdown" snippet="featureList"></div>
+						<div><span></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'optimizedJavaScript')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'canvas')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webGl')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webAudio')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'fullscreen')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'pointerLock')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'indexedDb')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'serviceWorker')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webSocket')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webRtc')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'domLevel3')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'touch')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'gamepad')"></span></div>
+						<div></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webAssembly')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'sharedArrayBuffer')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'simd')"></span></div>
+						<div class="js-column"><span ng-class="getBrowserFeatureClass(browser, 'webGl2')"></span></div>
+					</div>
+				</div>
+				<div class="swoosh"><div></div></div>
+			</div>
+		</div>
+	</div>
+</div>

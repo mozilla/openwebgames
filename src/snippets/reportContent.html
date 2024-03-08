@@ -1,0 +1,25 @@
+<div class="view-report report-page container">
+	<section class="content">
+		<h1>Report a Problem</h1>
+		<p>Your feedback may be shared with others so please be sure not to include personal information, such as email address, passwords or phone number.</p>
+		<form class="feedback">
+			<textarea id="message" name="message" required="required" data-minlength="20"></textarea>
+			<label for="message">Description</label>
+			<button type="submit" value="Submit" class="btn">Submit</button>
+		</form>
+	</section>
+	<section class="confirmation is-hidden">
+		<div class="confirmation__container">
+			<div class="success">
+				<h2>Thanks!</h2>
+				Your feedback is important to us.<br/><br/>
+				<button class="btn close">Close</button>
+			</div>
+			<div class="error">
+				<h2>Sorry!</h2>
+				There was an error sending your feedback, please try again.<br/><br/>
+				<button class="btn close">Close</button>
+			</div>
+		</div>
+	</section>
+</div>

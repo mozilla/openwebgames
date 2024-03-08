@@ -1,0 +1,34 @@
+
+body.notification {
+
+		margin-top: 40px;
+
+		div.logo {
+				top: 40px;
+		}
+
+		div.nav-main {
+				top: 40px;
+		}
+
+}
+
+div.notification {
+
+		div.inner {
+
+				display: none;
+				width: 100%;
+				background: orange;
+				text-align: center;
+				padding: 0.5em;
+				position: fixed;
+				top: 0;
+
+				&.active {
+						display: block;
+				}
+
+		}
+
+}

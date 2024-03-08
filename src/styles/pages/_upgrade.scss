@@ -1,0 +1,80 @@
+.view-upgrade {
+	text-align: center;
+
+	&.page-wrapper {
+		margin-top: 0;
+	}
+
+	ul {
+		@extend .list-unstyled;
+		li {
+			@extend %nav-button-inline;
+			display: inline-block;
+		}
+	}
+	.container > p {
+		max-width: 450px;
+		margin: 30px auto 0;
+	}
+	.browsers {
+		@include make-md-column(12);
+		@include make-lg-column(12);
+		display: none;
+		margin-top: 30px;
+		.browser-stable {
+			transform: matrix(1, 0, 0, 1, 0, 0);
+		}
+		.browser-experimental {
+			transform: matrix(1, 0, 0, 1, 0, 600);
+		}
+		.browser {
+			@include make-sm-column(12);
+			@include make-md-column(3);
+			@extend %bordered-box;
+			padding: 70px 0 30px;
+			img {
+				width: 100px;
+			}
+			h2 {
+				font-size: 24px;
+				font-weight: $body;
+				margin-bottom: 0;
+			}
+			p {
+				font-size: 10px;
+				margin: 0;
+			}
+			.btn {
+				margin: 25px 0 0;
+			}
+		}
+		&:last-child {
+			.browser {
+				@include make-md-column(4);
+			}
+		}
+	}
+	.experimentalBrowsers {
+		top: 231px;
+		left: 0;
+	    right: 0;
+	    @media screen and ( max-height: $large-screen-height ){
+	    	top: 284px;
+	    }
+	}
+}
+@media only screen and (max-width : $mobile-screen-size) {
+	.container{
+		overflow: hidden;
+	}
+	.experimentalBrowsers {
+		top: 250px !important;
+	}
+}
+@media only screen and (min-width : $mobile-screen-size) {
+	.upgrade {
+		.page-content {
+			overflow: hidden;
+		}
+	}
+}

@@ -1,0 +1,71 @@
+
+body.circle-grid {
+	&.faq, &.home, &.media, &.resources, &.rights, &.upgrade {
+		.wrapper {
+			pointer-events: none;
+			a, button, path, .logo, .nav-main, .resource, nav li {
+				pointer-events: auto;
+			}
+		}
+	}
+}
+
+body.circle-grid {
+
+	.grid-container {
+
+		position: absolute;
+		width: 100%;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		box-sizing: border-box;
+
+		.smoke1 {
+			position: absolute;
+			width: 100%;
+			height: 101vh;
+			opacity: 0.8;
+			background: $body-smoke-1;
+			background-size: 843px 465px;
+			width: 843px;
+			height: 465px;
+		}
+
+		.smoke2 {
+			position: absolute;
+			width: 100%;
+			height: 101vh;
+			background: $body-smoke-2;
+			background-size: 561px 566px;
+			width: 561px;
+			height: 566px;
+		}
+
+		.circle-container {
+			width: 105%;
+			height: 100%;
+			overflow: hidden;
+			.circle-outer {
+				width: 45px;
+				height: 45px;
+				float: left;
+				opacity: 0.07;
+				&.selected {
+					opacity: 0.03;
+				}
+				.circle-inner {
+					width: 11px;
+					height: 11px;
+					margin: 0 auto;
+					top: 50%;
+					position: relative;
+					transform: translateY(-50%);
+					border: 1px solid #fff;
+					border-radius: 50%;
+				}
+			}
+		}
+
+	}
+}
+

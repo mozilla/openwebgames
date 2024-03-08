@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+	<head>
+
+		<!-- bones -->
+		<meta charset="utf-8" />
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no" />
+		<meta name="google-site-verification" content="cn7vDq2Ina8kIknMESQpiwiQBYDHj49GFWvXXWnfIjI" />
+
+		<!-- favicons -->
+		<link rel="icon" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="152x152" href="/assets/img/favicons/apple-touch-icon-152x152.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/img/favicons/apple-touch-icon-144x144.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="120x120" href="/assets/img/favicons/apple-touch-icon-120x120.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/img/favicons/apple-touch-icon-114x114.png" />
+		<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/favicons/apple-touch-icon-72x72.png" />
+		<link rel="apple-touch-icon-precomposed" href="/assets/img/favicons/apple-touch-icon-57x57.png" />
+		<meta name="msapplication-TileColor" content="#ffffff" />
+		<meta name="msapplication-TileImage" content="/assets/img/favicons/mstile-144x144.png" />
+
+		<!-- social -->
+		<title ng-bind="page.title">openwebgames.com</title>
+		<meta name="description" ng-attr-content="{{page.description}}" />
+		<meta name="keywords" ng-attr-content="{{page.keywords.join(',')}}" />
+		<meta property="og:url" ng-attr-content="{{stateUrl}}" />
+		<meta property="og:title" ng-attr-content="{{page.title}}" />
+		<meta property="og:description" ng-attr-content="{{page.description}}" />
+		<meta property="og:image" ng-attr-content="{{page.imageUrl}}" />
+		<meta property="twitter:card" content="summary" />
+		<meta property="twitter:site" content="@openwebgames" />
+		<meta property="twitter:title" ng-attr-content="{{page.title}}" />
+		<meta property="twitter:description" ng-attr-content="{{page.description}}" />
+		<meta property="twitter:image" ng-attr-content="{{page.imageUrl}}" />
+		<link rel="image_src" ng-attr-href="{{page.imageUrl}}" />
+
+		<!-- styles -->
+		<link rel="stylesheet" type="text/css" href="/css/app.min.css" />
+
+	</head>
+	<body ng-class="[stateClass, browserName, testStateClass]" class="capture-arrows capture-mouse capture-diagnostic-key capture-konami circle-grid">
+
+		<!-- templates -->
+		<div class="wrapper">
+			<div class="page-content gsapify-router" ui-view="content" blurrable></div>
+			<nav-arrow direction="up"></nav-arrow>
+			<div class="logo"></div>
+			<nav-main></nav-main>
+		</div>
+		<div class="nav-secondary"></div>
+		<modal></modal>
+
+		<!-- scripts -->
+		<script src="/assets/js/ga.min.js"></script>
+		<script src="/libs/js/lodash.min.js"></script>
+		<script src="/libs/js/jquery-2.2.3.min.js"></script>
+		<script src="/libs/js/jquery-ui-1.11.4.min.js"></script>
+		<script src="/libs/js/bootstrap.min.js"></script>
+		<script src="/assets/js/browser-versions.min.js"></script>
+		<script src="/assets/data/browser-versions.jsonp?callback=setBrowserVersions"></script>
+		<script src="/libs/js/ua-parser.min.js"></script>
+		<script src="/libs/js/TweenMax.min.js"></script>
+		<script src="/libs/js/slick.min.js"></script>
+		<script src="/libs/js/angular.min.js"></script>
+		<script src="/libs/js/angular-ui-router.min.js"></script>
+		<script src="/libs/js/angular-sanitize.min.js"></script>
+		<script src="/libs/js/angular-animate.min.js"></script>
+		<script src="/libs/js/angular-gsapify-router.min.js"></script>
+		<script src="/libs/js/ui-bootstrap-1.1.2.min.js"></script>
+		<script src="/libs/js/d3.min.js"></script>
+		<script src="/js/app.min.js"></script>
+		<script src="/js/templates.min.js"></script>
+
+	</body>
+</html>

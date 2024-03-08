@@ -1,0 +1,11 @@
+
+<input metadata type="hidden" name="title" value="Articles Title"/>
+<input metadata type="hidden" name="description" value="Articles Description"/>
+<input metadata type="hidden" name="keywords" value="articlekey1,articlekey2"/>
+
+<div ng-repeat="page in pages | byPageType:'article' | orderBy:'-date'">
+	<a ui-sref="app.page({slug:page.slug})"><h1 ng-bind="page.title"></h1></a>
+	<span ng-bind="page.date"></span><br/>
+	<span ng-bind="page.description"></span><br/>
+</div>
+

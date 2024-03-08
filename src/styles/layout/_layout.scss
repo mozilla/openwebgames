@@ -1,0 +1,240 @@
+// Resets
+html {
+	position: relative;
+	height: 100%;
+}
+body {
+	width: 100%;
+	height: 100%;
+	background: $body-bg;
+	position: relative;
+	overflow-x: hidden;
+	overflow-y: auto;
+	// Font smoothing in OSX
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	// Layout
+	& > .wrapper {
+		margin: 0 auto;
+		height: 100%;
+		position: relative;
+		width: 96%;
+		@media only screen and (max-width : $mobile-screen-size) {
+			width: 90%;
+		}
+	}
+	&.test-state-complete {
+		.page-content {
+			.page-wrapper {
+				@media only screen and (max-width : $mobile-screen-size) and (min-width: $screen-xs-max) {
+					margin-top: 0;
+					top: 50%;
+					transform: translateY(-50%);
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+	&.test-state-in-progress, &.test-state-timeout {
+		@media only screen and (max-width : $mobile-screen-size) {
+			.nav-main {
+				display: none;
+			}
+		}
+	}
+	&.test-state-timeout {
+		.test-controls {
+			display: none;
+			@media only screen and (max-width : $mobile-screen-size) {
+				display: block;
+			}
+		}
+	}
+}
+
+// Remove outlines
+a {
+	outline: none;
+	text-decoration: underline;
+
+	&:hover, &:active, &:focus {
+		outline: none;
+	}
+}
+
+.page-content {
+	@include transition(filter 1s, -webkit-filter 1s, opacity 1s);
+	@include animation-timing-function(cubic-bezier(0.23, 1, 0.32, 1));
+
+	position: absolute;
+	width: 100%;
+	padding: 0;
+	height: 100%;
+
+	// Lock scroll when navigation is open
+	&.blur {
+		height: 100vh;
+		overflow: hidden;
+	}
+	&.blur-fallback {
+		@include transition(opacity 0.5s);
+		@include animation-timing-function(ease-out);
+	}
+
+	.page-wrapper {
+		@include clearfix;
+
+		position: relative;
+		width: 100%;
+		margin-top: 20px;
+		padding-bottom: 200px;
+		
+		@media screen and ( max-height: $large-screen-height ){
+			padding-top: 50px;
+		}
+		@media screen and ( min-height: $large-screen-height ){
+			margin-top: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			margin-bottom: 0;
+		}
+		@media only screen and (max-width : $mobile-screen-size) {
+			margin-bottom: 0px;
+			margin-top: 30px;
+			min-height: 0;
+			padding-bottom: 0;
+		}
+	}
+}
+
+
+
+.container {
+	max-width: 100%;
+}
+
+.blur {
+	@include filter(blur(5px));
+	opacity: .6;
+}
+.blur-fallback {
+	opacity: .1;
+}
+
+.align-center {
+	display: table;
+	width: 100%;
+	height: 100%;
+
+	& > * {
+		display: table-cell;
+		text-align: center;
+		vertical-align: middle;
+	}
+}
+
+// Text
+h1 {
+	font-weight: $headline;
+	letter-spacing: -0.02em;
+	@media only screen and (max-width : $mobile-screen-size) {
+		font-size: 40px;
+	}
+}
+h2 {
+	font-weight: $bold;
+	letter-spacing: 0.025em;
+	line-height: 1.3;
+}
+h3 {
+	font-weight: $bold;
+	letter-spacing: 0.025em;
+	line-height: 1.3;
+}
+p {
+	font-weight: $body;
+	line-height: 2;
+	@media only screen and (max-width : $mobile-screen-size) {
+		line-height: 1.5;
+	}
+}
+
+// Panel: Aligned Center
+%centered-panel {
+	@include make-sm-column(8);
+	@include make-sm-column-push(2);
+	@include make-md-column(7);
+	@include make-md-column-push(2.5);
+	@include make-xl-column(5);
+	@include make-xl-column-push(3.5);
+	text-align: center;
+	h1, p, form {
+		max-width: 500px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+// Bordered box
+%bordered-box {
+	display: block;
+	text-align: center;
+	border: 1px solid rgba($teal, .1);
+	text-decoration: none;
+	color: #fff;
+	background: $teal;
+	background: -moz-linear-gradient(top, rgba($teal,0) 0%, rgba($teal,0) 65%, rgba($teal,0.05) 100%);
+	background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba($teal,0)), color-stop(65%, rgba($teal,0)), color-stop(100%, rgba($teal,0.05)));
+	background: -webkit-linear-gradient(top, rgba($teal,0) 0%, rgba($teal,0) 65%, rgba($teal,0.05) 100%);
+	background: -o-linear-gradient(top, rgba($teal,0) 0%, rgba($teal,0) 65%, rgba($teal,0.05) 100%);
+	background: -ms-linear-gradient(top, rgba($teal,0) 0%, rgba($teal,0) 65%, rgba($teal,0.05) 100%);
+	background: linear-gradient(to bottom, rgba($teal,0) 0%, rgba($teal,0) 65%, rgba($teal,0.05) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$teal', endColorstr='$teal', GradientType=0 );
+	.btn {
+		opacity: 0;
+	}
+	&:hover, &.active {
+		border-color: rgba($orange, 1);
+		.btn {
+			opacity: 1;
+		}
+	}
+	@media only screen and (max-width : $mobile-screen-size) {
+		.btn {
+			opacity: 1;
+		}
+	}
+}
+
+@include keyframes(spinner) {
+	0% {
+		@include transform(rotate(0deg));
+	}
+	100% {
+		@include transform(rotate(360deg));
+	}
+}
+
+/* @media only screen and (min-width : $screen-xxl) {
+
+}
+
+@media only screen and (max-width : $screen-xl) {
+
+}
+
+@media only screen and (max-width : $screen-lg) {
+
+}
+
+@media only screen and (max-width : $screen-md) {
+
+}
+
+@media only screen and (max-width : $screen-sm) {
+
+}
+
+@media only screen and (max-width : $screen-xs) {
+
+} */

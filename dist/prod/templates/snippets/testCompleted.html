@@ -1,0 +1,8 @@
+<div class="interstial-screen content">
+	<div class="icon complete"></div>
+	<h1>The Test is Complete!</h1>
+	<p>From here you can see the results, download the JSON file to save your results for later, or report any problem below.</p>
+	<a ng-click="viewResults()" class="btn btn-highlight">See Results</a>
+	<a ng-click="viewResultsModal()" class="btn json">Download JSON</a>
+</div>
+<div ng-if="isMobile" class="report-problem" snippet="reportContent"></div>

@@ -1,0 +1,13 @@
+
+.view-qrcode {
+	text-align: center;
+	svg {
+		margin: 0 auto;
+		max-width: 300px;
+		max-height: 50%;
+		path {
+			fill: #fff;
+		}
+	}
+}
+

@@ -1,0 +1,90 @@
+<div class="list-wrapper">
+	<ul>
+		<li class="section-title"><span>Core</span></li>
+		<li><span>Optimized.js/asm.js</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'optimizedJavaScript')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'optimizedJavaScript')"></span>
+		</li>
+		<li><span>Canvas 2D</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'canvas')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'canvas')"></span>
+		</li>
+		<li><span>WebGL</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webGl')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webGl')"></span>
+		</li>
+		<li><span>WebAudio</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webAudio')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webAudio')"></span>
+		</li>
+		<li><span>Fullscreen API</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'fullscreen')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'fullscreen')"></span>
+		</li>
+		<li><span>Pointer Lock API</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'pointerLock')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'pointerLock')"></span>
+		</li>
+		<div class="swoosh"><div></div></div>
+	</ul>
+	<ul>
+		<li class="section-title"><span>Storage</span></li>
+		<li><span>IndexedDB</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'indexedDb')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'indexedDb')"></span>
+		</li>
+		<li><span>ServiceWorker</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'serviceWorker')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'serviceWorker')"></span>
+		</li>
+		<div class="swoosh"><div></div></div>
+	</ul>
+	<ul>
+		<li class="section-title"><span>Multiplayer</span></li>
+		<li><span>WebSockets</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webSocket')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webSocket')"></span>
+		</li>
+		<li><span>WebRTC</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webRtc')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webRtc')"></span>
+		</li>
+		<div class="swoosh"><div></div></div>
+	</ul>
+	<ul>
+		<li class="section-title"><span>Input</span></li>
+		<li><span>DOM Events Level 3</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'domLevel3')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'domLevel3')"></span>
+		</li>
+		<li><span>Pointer Events</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'touch')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'touch')"></span>
+		</li>
+		<li><span>Gamepad API</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'gamepad')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'gamepad')"></span>
+		</li>
+		<div class="swoosh"><div></div></div>
+	</ul>
+	<ul>
+		<li class="section-title"><span>Future</span></li>
+		<li><span>WebAssembly</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webAssembly')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webAssembly')"></span>
+		</li>
+		<li><span>Shared Memory</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'sharedArrayBuffer')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'sharedArrayBuffer')"></span>
+		</li>
+		<li><span>SIMD</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'simd')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'simd')"></span>
+		</li>
+		<li><span>WebGL 2</span>
+			<span class="browser" ng-if="browser" ng-class="getBrowserFeatureClass(browser, 'webGl2')"></span>
+			<span class="game" ng-if="gameKey" ng-class="getGameFeatureClass(gameKey, 'webGl2')"></span>
+		</li>
+		<div class="swoosh"><div></div></div>
+	</ul>
+</div>

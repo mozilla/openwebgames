@@ -1,0 +1,523 @@
+.view-timeline {
+
+	&.page-wrapper {
+		margin-bottom: 200px;
+		max-width: 1845px; // max width to avoid elements spreading when past 1920px
+
+		min-height: 725px;
+		margin: 0 auto;
+		@media screen and ( max-height: $large-screen-height ){
+			margin-top: 60px;
+		}
+	}
+
+	.timeline-wrapper,
+	.timeline-dates,
+	.timeline-markers {
+		@include make-sm-column(9);
+		@include make-sm-column-push(1.5);
+		position: relative;
+	}
+
+	.timeline-markers,
+	.timeline-dates {
+		opacity: .5;
+	}
+
+	// Timeline
+	.timeline-bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		pointer-events: none;
+
+		.line-introduced {
+			fill: #fff;
+		}
+		.line-supported {
+			fill: $teal;
+		}
+		.line-accumulator {
+			fill: none;
+			stroke: $teal;
+			stroke-miterlimit: 10;
+		}
+	}
+
+	.timeline-markers {
+		margin-top: -1.25%;
+	}
+
+	.timeline-markers--lines {
+		fill: none;
+		stroke: #FFFFFF;
+		stroke-width: 1.5;
+		stroke-miterlimit: 10;
+	}
+
+	// Components
+	.components,
+	.milestones,
+	.browsers {
+		@extend .list-unstyled;
+	}
+	.components {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+	}
+
+	.component {
+
+		@mixin component-transition() {
+			@include transition(filter 0.5s, -webkit-filter 0.5s, opacity 0.5s);
+			@include animation-timing-function(cubic-bezier(0.23, 1, 0.32, 1));
+		}
+
+		// not edge or firefox
+		body:not(.edge):not(.firefox) & {
+			@include component-transition();
+			&.inactive {
+				@include filter(blur(5px));
+			}
+		}
+
+		// edge
+		body.edge & {
+			ul, .title, .timeline-bg {
+				@include component-transition();
+			}
+			&.inactive {
+				ul, .title, .timeline-bg {
+					opacity: 0.3;
+				}
+			}
+		}
+
+		// firefox
+		body.firefox & {
+			@include component-transition();
+			&.inactive {
+				opacity: 0.3;
+			}
+		}
+
+		&.active {
+			.title {
+				font-weight: $headline;
+			}
+			.expanded-content {
+				visibility: visible;
+				opacity: 1;
+			}
+			.introduced {
+				.dot {
+					fill: #fff;
+				}
+			}
+			.supported {
+				.dot-blue {
+					fill: $teal;
+				}
+			}
+		}
+	}
+
+	p.description {
+		line-height: 1.5;
+	}
+
+	.component-content {
+		position: absolute;
+		top: -7px;
+		left: -0.4%;
+		width: 87.5%;
+		height: 25px;
+		cursor: default;
+
+		.title {
+			position: absolute;
+			padding-right: 20px;
+			text-align: right;
+			font-weight: $body;
+			margin-left: -300px;
+			width: 300px;
+			line-height: 1.2;
+		}
+		.expanded-content {
+			@include transition(opacity .5s);
+
+			position: absolute;
+			width: 100%;
+			top: 20px;
+			visibility: hidden;
+			opacity: 0;
+
+			span {
+				width: 400px;
+				margin-right: -400px;
+				display: block;
+				position: absolute;
+			}
+		}
+	}
+
+	.component {
+
+		// each component spaced 7.8% apart
+
+		&:nth-child(2) {
+			.component-content {
+				margin-top: 7.6%;
+			}
+		}
+
+		&:nth-child(3) {
+			.component-content {
+				margin-top: 15.4%;
+			}
+		}
+
+		&:nth-child(4) {
+			.component-content {
+				margin-top: 23.2%;
+			}
+		}
+
+		&:nth-child(5) {
+			.component-content {
+				margin-top: 30.8%;
+			}
+		}
+
+		&:nth-child(6) {
+			.component-content {
+				margin-top: 38.6%;
+			}
+		}
+
+		&:nth-child(7) {
+			.component-content {
+				margin-top: 46.4%;
+			}
+		}
+
+	}
+
+	// Year Positions
+	.year-0 {
+		.title {
+			text-align: left;
+			margin: 0;
+			width: auto;
+		}
+		.title,
+		.description span {
+			left: -16%;
+			top: -45px;
+		}
+		.description span {
+			top: 5px;
+		}
+		&.dot {
+			left: -20%;
+			&.blue-dot {
+				left: -1%;
+				margin-right: 0 !important;
+			}
+		}
+	}
+	.year-1 {
+		.title,
+		.description span {
+			right: 100%;
+		}
+		&.dot {
+			left: 0;
+			&.blue-dot {
+				left: -1%;
+				margin-right: 0 !important;
+			}
+		}
+		&.browser {
+			right: 97.8%;
+			&.second {
+				left: auto;
+				right: 95%;
+			}
+			&.third {
+				left: auto;
+				right: 92%;
+			}
+			&.fourth {
+				left: auto;
+				right: 89%;
+			}
+		}
+	}
+	.year-2 {
+		.title,
+		.description span {
+			right: 78%;
+		}
+		&.dot {
+			right: 77%;
+		}
+		&.browser {
+			right: 76%;
+			&.browser-first {
+				right: 78.8%;
+			}
+			&.second {
+				left: auto;
+				right: 73.2%;
+			}
+			&.third {
+				left: auto;
+				right: 70.2%;
+			}
+		}
+	}
+	.year-3 {
+		.title,
+		.description span {
+			right: 55.5%;
+		}
+		&.dot {
+			right: 54%;
+		}
+		&.browser {
+			right: 53.2%;
+			&.browser-first {
+				right: 55.8%;
+			}
+		}
+	}
+	.year-4 {
+		&.dot {
+			right: 31.5%;
+		}
+		&.browser {
+			right: 31%;
+			&.second {
+				right: 28%;
+			}
+			&.third {
+				right: 25.5%;
+			}
+		}
+	}
+	.year-5 {
+		&.dot {
+			right: 8%;
+		}
+		&.browser {
+			right: 7.5%;
+			&.second {
+				right: 4.8%;
+			}
+			&.third {
+				right: 2%;
+			}
+		}
+	}
+
+	// Dots
+	$dot-size: 14px;
+	$browser-size: 20px;
+	.milestones,
+	.browsers {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		li {
+			position: absolute;
+			top: 0;
+			left: 20%;
+			height: 100%;
+		}
+		& > li {
+			width: 100%;
+			left: 0;
+		}
+	}
+	.milestones {
+		.dot {
+			width: $dot-size;
+			height: auto;
+			position: absolute;
+			fill: #0D0C19;
+			@include transition(fill .5s);
+		}
+		.introduced {
+			.dot {
+				stroke: #fff;
+			}
+		}
+		.supported {
+			.dot {
+				stroke: $teal;
+				width: $dot-size * 2.5565;
+				height: auto;
+				top: -10px;
+				margin-right: -1%;
+			}
+		}
+	}
+	.browsers {
+		margin-left: 22px; // distance from dot
+		top: -2px;
+		li {
+			left: auto;
+			width: $browser-size;
+			height: $browser-size;
+			z-index: 1;
+			&:before {
+				content: '';
+				display: block;
+				width: $browser-size;
+				height: $browser-size;
+				background-size: 100% auto;
+			}
+			&.firefox {
+				&:before {
+					background-image: url(/assets/img/browsers/firefox_256x256.png);
+				}
+			}
+			&.chrome {
+				&:before {
+					background-image: url(/assets/img/browsers/chrome_256x256.png);
+				}
+			}
+			&.ie {
+				&:before {
+					background-image: url(/assets/img/browsers/internet-explorer_256x256.png);
+				}
+			}
+			&.edge {
+				&:before {
+					background-image: url(/assets/img/browsers/edge_256x256.png);
+				}
+			}
+			&.safari {
+				&:before {
+					background-image: url(/assets/img/browsers/safari_256x256.png);
+				}
+			}
+		}
+	}
+
+	// Future
+	.future {
+		.dot-blue {
+			@include transition(fill 0.5s);
+		}
+
+		.component-content {
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: auto;
+
+			& > div {
+				position: absolute;
+
+				&.active {
+					.dot-blue {
+						fill: $teal;
+					}
+				}
+
+				&.inactive {
+					.dot-blue {
+						fill: #100F1C;
+					}
+				}
+
+				&:hover, &.show-content {
+					.title {
+						font-weight: $headline;
+					}
+
+					.expanded-content {
+						visibility: visible;
+						opacity: 1;
+						max-height: 2000px;
+						@include transition(opacity .3s, max-height .3s);
+					}
+
+					.description {
+						position: relative;
+					}
+				}
+			}
+		}
+
+		.future-today {
+			margin-top: 23.3%;
+			margin-left: 99.41%;
+		}
+
+		.future-webrtc {
+			margin-top: 18%;
+			margin-left: 104%;
+		}
+		.future-webassembly {
+			margin-top: 20%;
+			margin-left: 108.5%;
+		}
+		.future-webgl2 {
+			margin-top: 24%;
+			margin-left: 104%;
+		}
+
+		.expanded-content {
+			top: 0;
+			right: 120%;
+			width: 300px;
+			z-index: 1;
+			max-height: 0;
+		}
+
+		.today-dot {
+			position: absolute;
+			top: -27.5px;
+			left: -27.5px;
+			width: 55px;
+			height: auto;
+		}
+
+		.future-dot {
+			width: $dot-size * 2.7;
+			left: ($dot-size * 2.7 / -2);
+			top: ($dot-size * 2.7 / -2);
+		}
+	}
+
+	.timeline-legend {
+		position: absolute;
+		width: 100%;
+		margin-top: 40%;
+	}
+
+	.timeline-dates {
+		@extend .list-unstyled;
+		li {
+			font-weight: $body;
+			text-align: left;
+			width: 20%;
+			display: block;
+			float: left;
+			&:last-child {
+				position: absolute;
+				right: 14px;
+				text-align: right;
+			}
+		}
+	}
+
+	svg {
+		overflow: visible;
+	}
+}

@@ -1,0 +1,760 @@
+// Layout Overrides
+
+.tests .nav-secondary {
+	display: none;
+}
+.tests {
+	&.test-state-in-progress {
+		@media screen and (max-width: $mobile-screen-size) and (orientation: landscape) {
+			.wrapper {
+				width: 98%;
+			}
+		}
+		.close {
+			display: block;
+		}
+		.view-tests {
+			.content {
+				margin-top: -25px;
+			}
+		}
+	}
+	&.test-state-completed {
+		.page-wrapper {
+			padding-bottom: 0;
+			// made larger to switch to vertical align
+			@media screen and (max-width: $mobile-screen-size) {
+				.interstial {
+					top: 0;
+				}
+				.btn {
+					left: 0;
+					margin-left: 0;
+					text-align: left;
+					&.json {
+						@media screen and (orientation: landscape) {
+							margin-right: 0;
+							margin-left: 30px;
+						}
+					}
+				}
+			}
+			@media screen and (max-width: $mobile-screen-size) and (min-width: $screen-sm){
+				top: 25%;
+			}
+		}
+	}
+	nav {
+		width: 155px;
+		margin: 0 auto;
+		.nav-down {
+			position: absolute;
+			bottom: 47px;
+		}
+	}
+	.page-wrapper {
+		margin: 0;
+		padding-top: 2%;
+		padding-bottom: 0;
+		top: 0 ;
+		transform: translateY(0);
+		// made larger to switch to vertical align
+		@media screen and ( min-height: 1100px ){
+			margin-top: 0;
+			padding-top: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			margin-bottom: 0;
+		}
+	}
+	// Hide text in logo only on this page
+	.logo {
+		.cls-4 {
+			display: none;
+		}
+		@media screen and ( max-width: $screen-xs-max ) {
+			margin-bottom: 0;
+			padding-bottom: 70px;
+		}
+	}
+}
+
+// View Styles
+.view-tests {
+
+	clear: both;
+	position: relative;
+
+	.test-drive {
+		height: 90vh;
+		@media screen and ( max-width: $screen-xs-max ) {
+			height: auto;
+		}
+	}
+
+	.interstial {
+		@include vertical-align();
+		z-index: 2;
+		@media screen and ( max-width: $screen-xs-max ) {
+			position: relative;
+			top: 100px;
+			min-height: 1px;
+			padding-bottom: 30px;
+			@include transform(translateX(0));
+		}
+		@media only screen and ( max-width: $screen-xs-max ) and (orientation: landscape) {
+			top: 30px;
+		}
+	}
+
+	.interstial-screen {
+		width: 700px;
+		margin: 0 auto;
+		text-align: center;
+		@media screen and ( max-width: $screen-xs-max ) {
+			width: 100%;
+		}
+		
+		img {
+			margin: 50px auto;
+		}
+		p {
+			margin: 30px auto 30px;
+		}
+		.btn {
+			margin: 20px 10px 0;
+		}
+		a:hover {
+			cursor: pointer;
+		}
+		.icon {
+			// Interstial Icons
+			$icon-background: no-repeat center/100% url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJ0aW1lbGluZS0tYWNjdW11bGF0ZWQtcG9pbnQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgODguOSA4OSIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgODguOSA4OTsiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxzdHlsZSB0eXBlPSJ0ZXh0L2NzcyI+LnN0MCB7b3BhY2l0eTogMC41O2ZpbGw6IHVybCgjb3V0dGVyLWhhbG9fMV8pO2VuYWJsZS1iYWNrZ3JvdW5kOiBuZXc7fTwvc3R5bGU+PHJhZGlhbEdyYWRpZW50IGlkPSJvdXR0ZXItaGFsb18xXyIgY3g9IjQ0LjQ3IiBjeT0iNDQuNDg0IiByPSI0NC40NyIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMC42OTIyIiBzdHlsZT0ic3RvcC1jb2xvcjojMDNBNEMxO3N0b3Atb3BhY2l0eTowIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdHlsZT0ic3RvcC1jb2xvcjojMDNBNEMxIi8+PC9yYWRpYWxHcmFkaWVudD48Y2lyY2xlIGlkPSJvdXR0ZXItaGFsbyIgY2xhc3M9InN0MCIgY3g9IjQ0LjUiIGN5PSI0NC41IiByPSI0NC41Ii8+PC9zdmc+');
+			$icon-size: 100px;
+
+			width: $icon-size;
+			height: $icon-size;
+			padding: 0;
+			margin-top: 0;
+			margin-bottom: 50px;
+			@include horizontal-align();
+			&.intro {
+				background: $icon-background,
+					no-repeat center/28% url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzNiAyOC4xMSI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLWxpbmVjYXA6c3F1YXJlO3N0cm9rZS1saW5lam9pbjpyb3VuZDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmV5ZS1pY29uPC90aXRsZT48Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjE4IiBjeT0iMTQuMDUiIHI9IjguMjIiLz48cGF0aCBjbGFzcz0iY2xzLTEiIGQ9Ik0wLjU1LDE0LjI2UzQuNzQsMC41NywxNy42MS41N2MwLDAsMTIuNjItLjUsMTcuOTQsMTMuNTYsMCwwLTYuNiwxMy41NC0xNy42LDEzLjU0UzAuNTUsMTQuMjYuNTUsMTQuMjZaIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMC4wNSAtMC4wNykiLz48L3N2Zz4=');
+			}
+			&.complete {
+				background: $icon-background,
+					no-repeat center/28% url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0OS45MyAzNy44MiI+PGRlZnM+PHN0eWxlPi5jbHMtMXtmaWxsOm5vbmU7c3Ryb2tlOiNmZmY7c3Ryb2tlLWxpbmVjYXA6cm91bmQ7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO308L3N0eWxlPjwvZGVmcz48dGl0bGU+ZGlhbW9uZDwvdGl0bGU+PHBvbHlsaW5lIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIzMy4xMiAxMS4xOSAyNC45NyAwLjUgMzguNjggMC41IDQxLjI4IDAuNSA0OS40MyAxMS4xOSAyNC45NyAzNy4zMyAwLjUgMTEuMTkgOC42NSAwLjUgMTEuMDYgMC41IDI0Ljk3IDAuNSAxNi44MSAxMS4xOSIvPjxwb2x5bGluZSBjbGFzcz0iY2xzLTEiIHBvaW50cz0iOC42NSAwLjUgMTYuODEgMTEuMTkgMjQuOTcgMzcuMzMgMzMuMTIgMTEuMTkgNDEuMjggMC41Ii8+PC9zdmc+');
+			}
+			&.error, &.cancelled {
+				background: $icon-background,
+					no-repeat center/28% url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMy4yNyAzNi4zIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6bm9uZTtzdHJva2U6I2ZmZjtzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO308L3N0eWxlPjwvZGVmcz48dGl0bGU+VmVjdG9yIFNtYXJ0IE9iamVjdDI8L3RpdGxlPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMTEuMjgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMjEuOTgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTcuMzUsMjkuOTJhMTYuMTMsMTYuMTMsMCwxLDEsMTkuMjksMHY2LjIzSDIyLjkyVjMyLjQ0SDE5LjI2djMuNzFIMTUuMzhWMzIuNDRIMTEuNDR2My43MUg3LjM1VjI5LjkyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMzcgLTAuMzUpIi8+PC9zdmc+');
+			}
+			&.timeout {
+				background: $icon-background,
+					no-repeat center/28% url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMy4yNyAzNi4zIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6bm9uZTtzdHJva2U6I2ZmZjtzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO308L3N0eWxlPjwvZGVmcz48dGl0bGU+VmVjdG9yIFNtYXJ0IE9iamVjdDI8L3RpdGxlPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMTEuMjgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMjEuOTgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTcuMzUsMjkuOTJhMTYuMTMsMTYuMTMsMCwxLDEsMTkuMjksMHY2LjIzSDIyLjkyVjMyLjQ0SDE5LjI2djMuNzFIMTUuMzhWMzIuNDRIMTEuNDR2My43MUg3LjM1VjI5LjkyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMzcgLTAuMzUpIi8+PC9zdmc+');
+				@media only screen and (max-width : $mobile-screen-size) {
+					background: no-repeat center/28% url('data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMiIgZGF0YS1uYW1lPSJMYXllciAyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAzMy4yNyAzNi4zIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6bm9uZTtzdHJva2U6I2ZmZjtzdHJva2UtbGluZWNhcDpzcXVhcmU7c3Ryb2tlLWxpbmVqb2luOnJvdW5kO308L3N0eWxlPjwvZGVmcz48dGl0bGU+VmVjdG9yIFNtYXJ0IE9iamVjdDI8L3RpdGxlPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMTEuMjgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxjaXJjbGUgY2xhc3M9ImNscy0xIiBjeD0iMjEuOTgiIGN5PSIyMi45NyIgcj0iMS40MSIvPjxwYXRoIGNsYXNzPSJjbHMtMSIgZD0iTTcuMzUsMjkuOTJhMTYuMTMsMTYuMTMsMCwxLDEsMTkuMjksMHY2LjIzSDIyLjkyVjMyLjQ0SDE5LjI2djMuNzFIMTUuMzhWMzIuNDRIMTEuNDR2My43MUg3LjM1VjI5LjkyWiIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTAuMzcgLTAuMzUpIi8+PC9zdmc+');
+					margin-bottom: 0;
+				}
+			}
+		}
+		.window {
+			.mobile-count {
+				display: none;
+			}
+			@media only screen and (max-width : $mobile-screen-size) {
+				display: block;
+				position: absolute;
+				margin: 0 auto;
+				width: 100%;
+				padding: 50px 0;
+				left: 0;
+				right: 0;
+				border: 1px solid $teal;
+				h1 {
+					margin-top: 0;
+				}
+				p {
+					margin-top: 0;
+					margin-bottom: 10px;
+				}
+				.desktop-count {
+					display: none;
+				}
+				.mobile-count {
+					display: block;
+					width: 100%;
+					text-align: center;
+					font-size: 30px;
+					margin-bottom: 10px;
+				}
+			}
+			@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+				padding: 0;
+				width: 80%;
+			}
+		}
+		.mobile-info {
+			display: none;
+			p {
+				font-size: 13px;
+				margin: 0 0 40px;
+			}
+			svg {
+				margin: 20px 0 10px;
+			}
+			@media only screen and (max-width : $mobile-screen-size) {
+				display: block;
+			}
+		}
+		.btn:nth-child(1) {
+
+		}
+		.json {
+			@media only screen and (max-width : $screen-xs) {
+				margin-top: 50px;
+			}
+		}
+
+	}
+
+	.content {
+		.game {
+			position: relative;
+			width: 100%;
+			height: 0;
+			padding-bottom: 56.25%;
+		}
+		iframe {
+			background: $blue-dark;
+			@extend %iframe;
+			.is-loading & {
+				visibility: hidden;
+			}
+		}
+		@media only screen and (max-width : $mobile-screen-size) {
+			margin-top: 80px;
+		}
+	}
+
+	.test-header {
+		@include make-row();
+		margin-bottom: 20px;
+		.meta {
+			@include make-sm-column(3);
+			h1 {
+				font-size: 36px;
+				margin-top: 40px;
+			}
+			dl {
+				font-size: 14px;
+				@include clearfix;
+			}
+			dt {
+				clear: both;
+				float: left;
+				font-weight: $body;
+				margin: 0 5px 10px 0;
+			}
+			dd {
+				margin-bottom: 10px;
+				float: left;
+				font-weight: $body;
+				&:before {
+					content: '[';
+				}
+				&:after {
+					content: ']';
+				}
+			}
+			@media only screen and (max-width : $screen-xs-max) {
+				h1 {
+					font-size: 20px;
+					margin-top: 40px;
+				}
+				dl {
+					font-size: 14px;
+					@include clearfix;
+				}
+				dt {
+					clear: both;
+					float: left;
+					font-weight: $body;
+					margin: 0 5px 10px 0;
+				}
+			}
+		}
+		.status {
+			@include make-sm-column(6);
+			text-align: center;
+
+			.progress-indicators {
+				@extend .list-unstyled;
+				display: table;
+				width: 100%;
+				max-width: 300px;
+				margin: 15px auto 0;
+				.mobile-count {
+					display: none;
+					color: $teal;
+					@media only screen and (max-width : $mobile-screen-size) {
+						display: block;
+					}
+				}
+				li {
+					display: table-cell;
+				}
+
+				span {
+					$circle-size: 10px;
+					display: inline-block;
+					border: 1px solid transparent;
+					width: $circle-size;
+					height: $circle-size;
+					border-radius: $circle-size;
+					margin-top: 20px;
+					@mixin indication($color) {
+						background: $color;
+						box-shadow: 0 0 6px 2px rgba($color, .6);
+					}
+					&.success {
+						@include indication($green);
+					}
+					&.timeout {
+						@include indication($yellow);
+					}
+					&.failed {
+						@include indication($red);
+					}
+					@-webkit-keyframes pulsate {
+						0% { opacity: 1.0; }
+						50% { opacity: 0.5; }
+						100% { opacity: 1.0; }
+					}
+					&.loading {
+						@include indication($gray);
+						-webkit-animation: pulsate 2.5s ease-out;
+						-webkit-animation-iteration-count: infinite;
+						opacity: 1;
+					}
+					&.running {
+						@include indication($gray-lighter);
+					}
+					&.queue {
+						border-color: rgba(#fff, .4);
+					}
+				}
+			}
+		}
+
+		.actions {
+			@include make-sm-column(3);
+			padding-top: 20px;
+			text-align: right;
+			button {
+				&:last-child {
+					clear: both;
+				}
+			}
+			.btn {
+				display: inline-block;
+				margin-top: 30px;
+				width: 100%;
+				max-width: 180px;
+				float: right;
+				&:last-child {
+					clear: both;
+				}
+				&.btn-highlight {
+					margin-right: 0;
+				}
+			}
+		}
+	}
+
+	.test-body {
+		@include make-sm-column(9);
+		float: none !important;
+		margin: 0 auto;
+		padding-right: 0;
+		padding-left: 0;
+		position: relative;
+		border: 1px solid $blue;
+		padding: 1px;
+		@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+			width: 83%;
+			margin: 0 auto;
+			left: 0;
+			right: 2px;
+		}
+		// Preloader
+		.game-details {
+			display: none;
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			z-index: 1;
+			background: $blue-dark;
+		    margin: -1px 0 0 -1px;
+			.wrapper {
+				@include vertical-align();
+				@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+					top: 42%;
+				}
+			}
+			.preloader {
+				width: 100%;
+				text-align: center;
+				margin: 20px auto 0 auto;
+				@media only screen and (max-width : $screen-xs-max) and (orientation: portrait) {
+					margin-top: 10px;
+				}
+				h2 {
+					font-weight: $headline;
+					margin: 0;
+					@media only screen and (max-width : $screen-xs-max) and (orientation: portrait) {
+						font-size: 20px;
+					}
+				}
+				span {
+					font-size: 60px;
+					color: $teal;
+					font-weight: 100;
+					@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+						font-size: 40px;
+					}
+					@media only screen and (max-width : $screen-xs-max) and (orientation: portrait) {
+						font-size: 20px;
+					}
+				}
+			}
+			.meta {
+				font-size: 14px;
+				text-align: center;
+				@media only screen and (max-width : $screen-xs-max) and (orientation: portrait) {
+					h1 {
+						font-size: 20px;
+						margin-top: 5px;
+					}
+				}
+				& > span {
+					text-transform: uppercase;
+					@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+						display: none;
+					}
+				}
+			}
+		}
+
+	}
+
+	// Show the preloader
+	&.is-loading {
+		.test-body .game-details {
+			display: block;
+		}
+	}
+
+	.test-controls {
+		$circle-size: 15px;
+
+		@include make-sm-column(9);
+		float: none !important;
+		margin: 15px auto 0;
+		@media only screen and (max-width : $mobile-screen-size) {
+			width: 100%;
+			position: absolute;
+			top: 0;
+			min-height: 100vh;
+			padding: 0;
+		}
+		@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+			position: relative;
+			min-height: 0;
+		}
+		.timer {
+			@include make-sm-column(2);
+			margin-top: 5px;
+			@media only screen and (max-width : $mobile-screen-size) {
+				bottom: 25px;
+				margin-left: 10px;
+				padding-left: 5px;
+				position: absolute;
+			}
+			@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+				left: 45px;
+				bottom: 5px;
+				position: relative;
+			}
+			&.in-progress {
+				float: left;
+			}
+		}
+
+		.game-tracker {
+			@include make-sm-column(8);
+			text-align: center;
+			position: relative;
+			@media only screen and (max-width : $mobile-screen-size) {
+				position: absolute;
+				bottom: 25px;
+				width: 130px;
+				left: 0;
+				right: 0;
+				padding: 0;
+				margin: 0 auto;
+			}
+			@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+				bottom: 15px;
+				position: relative;
+			}
+			.mobile-count {
+				display: none;
+				@media only screen and (max-width : $mobile-screen-size) {
+					display: block;
+					width: 100%;
+					margin: 0 auto;
+					padding: 0;
+					color: $teal;
+					&:before {
+						content: 'Test Progress: ';
+						color: #fff;
+					}
+				}
+			}
+			.progress-indicators {
+				@extend .list-unstyled;
+				margin: 15px auto 0;
+				display: inline-block;
+				li {
+					display: inline-block;
+					position: relative;
+					&:after {
+						content: '';
+						position: absolute;
+						height: 1px;
+						background-color: $blue;
+						right: 0;
+						width: 17px;
+						top: $circle-size / 2;
+					}
+					&:last-child {
+						&:after {
+							display: none;
+						}
+					}
+					&.queue, &.running, &.loading {
+						&:after {
+							background-color: #fff;
+						}
+					}
+					@media only screen and (max-width : $mobile-screen-size) {
+						display: none;
+					}
+				}
+
+				.game-status {
+					display: inline-block;
+					border: 1px solid $blue;
+					min-width: $circle-size;
+					min-height: $circle-size;
+					border-radius: $circle-size;
+					margin-right: 16px;
+					background: transparent;
+					position: relative;
+					.game-name {
+						display: none;
+						text-transform: capitalize;
+						font-style: italic;
+					}
+				}
+
+				.loading, .running {
+					.game-status {
+						@extend .btn;
+						@extend .btn-highlight;
+						margin-top: -8px;
+						pointer-events: none;
+						border-radius: $circle-size;
+						padding: 3px 10px;
+						border-color: $blue;
+						letter-spacing: .06em;
+						margin-left: 0;
+						&:before {
+							box-shadow: inset 0 0 20px 2px rgba($blue, .4);
+						}
+						.game-name {
+							display: block;
+						}
+					}
+				}
+
+				.queue {
+					.game-status {
+						border-color: #fff;
+					}
+				}
+
+			}
+		}
+
+		.actions {
+			@include make-sm-column(2);
+
+			button {
+				&.disabled {
+					opacity: 0.4;
+					&:hover {
+						color: inherit;
+					}
+				}
+				float: right;
+				font-size: 14px;
+				@extend %nav-button-inline;
+				background: none;
+				position: relative;
+				display: inline-block;
+				margin: 0 10px 0 0;
+				white-space: nowrap;
+				@media only screen and (max-width : $mobile-screen-size) {
+					margin: 0;
+				}
+				&:before {
+					position: absolute;
+					height: $arrow-size;
+					width: $arrow-size;
+					top: 12px;
+					right: -25px;
+					content: '';
+					display: block;
+					background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB2aWV3Qm94PSIwIDAgMTEgMTIuNiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMTEgMTIuNiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIHBvaW50cz0iMTAuNSw2LjMgMC41LDEyLjEgMC41LDAuNSAiLz48L3N2Zz4=) no-repeat;
+				}
+				&:first-child {
+					@media only screen and (max-width : $mobile-screen-size) {
+						color: transparent;
+						bottom: 10px;
+						right: 10px;
+						opacity: 1;
+						&:after {
+							content: 'skip';
+							position: absolute;
+							right: 0;
+							text-transform: uppercase;
+							color: #FFF;
+
+						}
+						&:hover {
+							color: transparent;
+						}
+					}
+					@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+						right: 75px;
+					}
+				}
+				&:last-child {
+					&:before {
+						background: url(data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4PSIwcHgiIHk9IjBweCINCgkgdmlld0JveD0iMCAwIDEyLjYgMTIuNiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgMTIuNiAxMi42OyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8cmVjdCB4PSIwLjUiIHk9IjAuNSIgY2xhc3M9InN0MCIgd2lkdGg9IjExLjYiIGhlaWdodD0iMTEuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmZmIiBzdHJva2UtbGluZWNhcD0ic3F1YXJlIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBzdHJva2UtbWl0ZXJsaW1pdD0iMTAiIC8+DQo8L3N2Zz4=) no-repeat;
+					}
+					@media only screen and (max-width : $mobile-screen-size) {
+						color: transparent;
+						&:before {
+							content: '×';
+							font-size: 40px;
+							padding-top: 1px;
+							padding-left: 2px;
+							font-weight: $body;
+							display: block;
+							color: #fff;
+							line-height: .8;
+							border: 1px solid $orange;
+							text-align: center;
+							height: 35px;
+							width: 35px;
+							background: transparent;
+							right: -15px;
+							top: -10px;
+						}
+					}
+					@media only screen and (max-height : 414px) {
+						&:before {
+							right: -10px;
+							top: -20px;
+						}
+					}
+				}
+			}
+			@media only screen and (max-width : $mobile-screen-size) {
+				position: absolute;
+				bottom: 10px;
+				left: 0;
+				right: 0;
+				width: 100%;
+			}
+			@media only screen and (max-width : $mobile-screen-size) and (orientation: landscape) {
+				bottom: 0;
+			}
+
+		}
+		
+	}
+}
+.close {
+	display: none;
+	position: absolute;
+	background: transparent;
+	outline: none;
+	border: none; 
+	&:hover, &:focus {
+		background: transparent;
+	}
+	top: 15px;
+	right: 0;
+	&:before {
+		content: '×';
+		font-size: 40px;
+		padding-top: 1px;
+		padding-left: 2px;
+		font-weight: $body;
+		display: block;
+		color: #fff;
+		line-height: .8;
+		border: 1px solid $orange;
+		text-align: center;
+		height: 35px;
+		width: 35px;
+		background: transparent;
+		right: -15px;
+		top: -10px;
+	}
+}
+
+// test meta
+%test-meta {
+	h1, h3 {
+		font-weight: $headline;
+		font-size: 36px;
+		margin-top: 40px;
+	}
+	dl {
+		font-size: 14px;
+		@include clearfix;
+	}
+	dt {
+		clear: both;
+		float: left;
+		font-weight: $body;
+		margin: 0 5px 10px 0;
+	}
+	dd {
+		margin-bottom: 10px;
+		float: left;
+		font-weight: $body;
+		&:before {
+			content: '[';
+		}
+		&:after {
+			content: ']';
+		}
+	}
+}

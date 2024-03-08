@@ -1,0 +1,59 @@
+
+header {
+	nav {
+		float: right;
+		.active {
+			font-weight: 700;
+		}
+	}
+
+	.header {
+		a {
+			color: #fff;
+			text-decoration: none;
+			margin: 0.5em;
+			display: inline-block;
+
+			svg.logo {
+				width	: 100px;
+				display	: inline-block;
+				margin-right: 10px;
+
+				path, circle {
+					fill: #333;
+				}
+
+				.shape1, .shape2, .shape3, .shape4 {
+					fill : rgb(255, 255, 255);
+				}
+
+				&.color {
+
+					.shape1 {
+						fill : rgb(255, 80, 32);
+					}
+					.shape2 {
+						fill : rgb(102, 153, 162);
+					}
+					.shape3, .shape4 {
+						fill : rgb(172, 192, 200);
+					}
+
+				}
+			}
+
+			div.title {
+				display: inline-block;
+				font-size: 50px;
+				line-height: 50px;
+				font-weight: $body;
+
+				strong {
+					display: block;
+					font-size: 76px;
+					font-weight: 700;
+				}
+			}
+		}
+	}
+}

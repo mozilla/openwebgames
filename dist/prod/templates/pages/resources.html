@@ -1,0 +1,23 @@
+
+<input metadata type="hidden" name="title" value="Resources | Open Web Games"/>
+<input metadata type="hidden" name="description" value="The web is changing the game. Is your browser ready to play? Here are a few resources for developers."/>
+
+<div class="page-wrapper view-resources developer-resource-listing">
+	<h1>Developer Resources</h1>
+	<div class="resources">
+		<a ng-repeat="resource in resources" href="{{ resource.url }}" target="_blank" class="resource">
+			<div class="wrapper">
+				<img src="{{ resource.icon }}">
+				<h2 ng-bind="resource.name"></h2>
+				<button class="btn">Learn more</button>
+			</div>
+		</a>
+		<div class="resource">
+			<div class="wrapper">
+				<img src="/assets/img/resources/git.png">
+				<h2>Download Local Developer Test</h2>
+				<button class="btn">Coming Soon</button>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,14 @@
+.logo {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 160px;
+	top: 2%;
+
+	@media only screen and (max-width : $mobile-screen-size) {
+		top: 3%;
+		.cls-4 {
+			display: none;
+		}
+	}
+}

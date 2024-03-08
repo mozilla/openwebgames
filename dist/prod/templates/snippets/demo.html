@@ -1,0 +1,22 @@
+<div class="demo-player">
+	<div class="container">
+		<header>
+			<h1>{{ selectedGame.name }}</h1>
+			<button class="stop" ng-click="stopDemo()">Stop demo</button>
+			<button class="fullscreen" ng-show="!isMobile && selectedGame.fullscreen" ng-click="fullscreenModal('game-frame')">Fullscreen</button>
+		</header>
+		<div class="demo">
+			<div class="wrapper">
+				<div class="game-container content"></div>
+			</div>
+			<div class="demo-info">
+				<div class="meta">
+					<dl>
+						<dt ng-repeat-start="credit in selectedGame.credits" ng-bind="credit.category"></dt>
+						<dd ng-repeat-end=""><a ng-href="{{credit.url}}" target="_new"><span ng-bind="credit.name"></span></a></dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

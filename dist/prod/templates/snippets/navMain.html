@@ -1,0 +1,45 @@
+<div class="nav-main">
+	<div class="nav-main__icon" ng-class="{'is-hidden': showMenu === true}">
+		<div snippet="navMainButtonBackground"></div>
+	</div>
+
+	<div class="nav-main__expanded" ng-class="{'is-hidden': showMenu === false}">
+		<div class="row">
+			<nav-main-button class="nav-main-button--isolated" slug="demos">Play Demos</nav-main-button>
+			<nav-main-button slug="faq" class="offset-2 nav-main-button--hide-top-entrypoint nav-main-button--hide-left-entrypoint nav-main-button--hide-right-entrypoint">FAQ</nav-main-button>
+		</div>
+
+		<div class="row">
+			<nav-main-button slug="resources" class="nav-main-button--hide-top-entrypoint nav-main-button--hide-left-entrypoint">Resources</nav-main-button>
+			<nav-main-button slug="home" class="nav-main-button--hide-top-entrypoint">Home</nav-main-button>
+			<nav-main-button class="nav-main-button--hide-right-entrypoint nav-main-button--hide-bottom-entrypoint" slug="timeline">Timeline</nav-main-button>
+		</div>
+
+		<div class="row">
+			<nav-main-button slug="media" class="nav-main-button--hide-bottom-entrypoint nav-main-button--hide-left-entrypoint">Logos<br/>&amp; Font</nav-main-button>
+			<nav-main-button class="nav-main-button--hide-right-entrypoint" slug="features">Features</nav-main-button>
+			<nav-main-button class="nav-main-button--isolated" slug="tests">Run Test</nav-main-button>
+		</div>
+
+		<div class="row">
+			<nav-main-button class="nav-main-button--hide-left-entrypoint nav-main-button--hide-bottom-entrypoint" slug="rights">Content<br/>Rights</nav-main-button>
+			<nav-main-button class="nav-main-button--hide-right-entrypoint nav-main-button--hide-left-entrypoint nav-main-button--hide-bottom-entrypoint" slug="upgrade">Upgrade Your Browser</nav-main-button>
+			<nav-main-button class="nav-main-button--isolated nav-main-button--privacy privacy-link">
+				<div><svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 26.8 35.8" enable-background="new 0 0 26.8 35.8" xml:space="preserve"><path fill="none" stroke="#fff" stroke-miterlimit="10" d="M5.2,18.2V8.9c0-4.6,3.8-8.4,8.4-8.4h0c4.6,0,8.4,3.8,8.4,8.4"/><rect x="0.5" y="18.2" fill="none" stroke="#fff" stroke-miterlimit="10" width="25.8" height="17.2"/></svg></div>Privacy Notice
+			</nav-main-button>
+		</div>
+
+		<ul class="nav-mobile">
+			<li><nav-main-button slug="home">Home</nav-main-button></li>
+			<li><nav-main-button slug="demos">Play Demos</nav-main-button></li>
+			<li><nav-main-button slug="features">Features</nav-main-button></li>
+			<li><nav-main-button slug="tests">Run Test</nav-main-button></li>
+			<li><nav-main-button slug="resources">Resources</nav-main-button></li>
+			<li><nav-main-button slug="media">Logos &amp; Fonts</nav-main-button></li>
+			<li><nav-main-button slug="faq">FAQ</nav-main-button></li>
+			<li><nav-main-button class="privacy-link">Privacy Notice</nav-main-button></li>
+		</ul>
+
+	</div>
+
+</div>

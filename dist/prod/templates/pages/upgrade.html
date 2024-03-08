@@ -1,0 +1,38 @@
+
+<input metadata type="hidden" name="title" value="Upgrade Your Browser | Open Web Games"/>
+<input metadata type="hidden" name="description" value="The web is changing the game. Is your browser ready to play? Make sure you have the latest version available!"/>
+
+<div class="page-wrapper view-upgrade">
+	<div class="container">
+		<h1>Upgrade Your Browser</h1>
+		<nav>
+			<ul>
+				<li ng-class="{active: selectedTab == 'stable'}" ng-click="selectStableBrowsers();" class="stable">Stable Browsers</li>
+				<li ng-class="{active: selectedTab == 'experimental'}" ng-click="selectExperimentalBrowsers();" class="bleeding-edge">Bleeding Edge</li>
+			</ul>
+		</nav>
+		<p ng-class="{'is-hidden': selectedTab !== 'stable'}">Play at your best: Choose your favorite browser to download the most recent release.</p>
+		<p ng-class="{'is-hidden': selectedTab !== 'experimental'}">Try out a bleeding edge browser: New features are first implemented and tested on these developer editions.</p>
+		<div class="browsers stableBrowsers">
+			<a ng-repeat="browser in stableBrowsers" ng-href="{{ browser.url }}" target="_new" class="browser browser-stable">
+				<div class="wrapper">
+					<img ng-src="{{ browser.icon }}">
+					<h2 ng-bind="browser.name"></h2>
+					<p>Version <span ng-bind="browser.stableVersion">48.0.2564.109</span></p>
+					<button class="btn">Download</button>
+				</div>
+			</a>
+		</div>
+
+		<div class="browsers experimentalBrowsers">
+			<a ng-repeat="browser in experimentalBrowsers" ng-href="{{ browser.url }}" target="_new" class="browser browser-experimental">
+				<div class="wrapper">
+					<img ng-src="{{ browser.icon }}">
+					<h2 ng-bind="browser.name"></h2>
+					<p>Version <span ng-bind="browser.latestVersion"></span></p>
+					<button class="btn">Download</button>
+				</div>
+			</a>
+		</div>
+	</div>
+</div>
